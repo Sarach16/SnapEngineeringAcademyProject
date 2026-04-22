@@ -1,31 +1,74 @@
-<!doctype html>
-<html>
-  <head>
-    <title>LA TV Shows | Home</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
-    <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="scripts.js"></script>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Catalog</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <h1 class="site-title">Book Catalog</h1>
 
-  <body>
-    <header class="main-header">
-      <h1 class="title">LA TV Shows</h1>
-    </header>
+    <div class="controls">
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search by title or author..."
+      />
+
+      <select id="category-filter">
+        <option value="All">All Categories</option>
+      </select>
+
+      <select id="sort-select">
+        <option value="default">Sort By</option>
+        <option value="year-asc">Publication Year: Oldest to Newest</option>
+        <option value="year-desc">Publication Year: Newest to Oldest</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+      </select>
+    </div>
+
+    <button id="wishlist-toggle" class="wishlist-link">
+      Wishlist <span id="wishlist-count">0</span>
+    </button>
+  </header>
+
+  <section id="wishlist-panel" class="wishlist-panel hidden">
+    <h2>My Wishlist</h2>
+    <div id="wishlist-items"></div>
+  </section>
+
+  <main>
     <div id="card-container"></div>
-    <div class="card" style="display: none">
-      <div class="card-content">
-        <h2>TV Show Title</h2>
-        <img src="" alt="TV Show Poster" />
-        <ul>
-          <li>Bullet Point 1</li>
-          <li>Bullet Point 2</li>
-          <li>Bullet Point 3</li>
-        </ul>
+  </main>
+
+  <!-- Keep template OUTSIDE card-container -->
+  <div class="card" id="template-card" style="display: none;">
+    <div class="image-wrapper">
+      <img src="" alt="Book cover" />
+
+      <div class="description-overlay">
+        <p class="description"></p>
       </div>
+
+      <button class="wishlist-btn" title="Add to wishlist">♡</button>
     </div>
-    <div class="footer">
-      <button onclick="quoteAlert()">Get A Quote!</button>
-      <button onclick="removeLastCard()">Remove A Card!</button>
+
+    <div class="card-content">
+      <h2></h2>
+      <p class="author"></p>
+      <p class="price"></p>
     </div>
-  </body>
+
+    <div class="extra-info" style="display: none;">
+      <p class="category"></p>
+      <p class="publisher"></p>
+      <p class="year"></p>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
 </html>
